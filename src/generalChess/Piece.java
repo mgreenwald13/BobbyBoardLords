@@ -1,9 +1,12 @@
 package generalChess;
+import java.awt.Point;
+import java.util.ArrayList;
 
 public abstract class Piece {
 	
 	private boolean color;
 	private String id; 
+	
 	public Piece(boolean b, String id){
 		this.color=b; //True is White, Black is False
 		this.id = id;
@@ -26,4 +29,3 @@ public abstract class Piece {
 	}
 
 }
-
