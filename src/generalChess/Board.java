@@ -1,6 +1,5 @@
 package generalChess;
 
-
 public class Board {
 	
 	private Piece[][] arr;
@@ -26,8 +25,8 @@ public class Board {
 		arr[2][0]=new Bishop(false);
 		arr[5][0]=new Bishop(false);
 	
-		arr[4][0]=new Queen(false);
-		arr[3][0]=new King(false);
+		arr[3][0]=new Queen(false);
+		arr[4][0]=new King(false);
 	
 		//white setup
 		arr[0][7]=new Rook(true);
@@ -39,11 +38,15 @@ public class Board {
 		arr[2][7]=new Bishop(true);
 		arr[5][7]=new Bishop(true);
 	
-		arr[4][7]=new Queen(true);
-		arr[3][7]=new King(true);
+		arr[3][7]=new Queen(true);
+		arr[4][7]=new King(true);
 
 	}
 	
+	
+	public Piece[][] getBoard(){
+		return arr;
+	}
 
 	public void printBoard(){ 
 		for(int y=0; y<8; y++){
