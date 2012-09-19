@@ -1,5 +1,8 @@
 package generalChess;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 public class Rook extends Piece {
 
 	public Rook(boolean b) {
@@ -8,5 +11,6 @@ public class Rook extends Piece {
 	}
 
 
-
 }
+
+
