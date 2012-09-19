@@ -19,6 +19,20 @@ public class Bobby {
 		numPiecesLeft=16;
 	}
 	
+	public Bobby(boolean b, Piece[][] start){
+		color=b;
+		getBoard(start);
+		numPiecesLeft=16;
+	}
+	
+	public void getBoard(Piece[][] p){
+		for(int x=0;x<8;x++){
+			for (int y=0;y<8;y++){
+				board[x][y]=p[x][y];
+			}
+		}
+	}
+	
 	public void getBoard(Board b){
 		Piece[][] arr=b.getBoard();
 		for(int x=0;x<8;x++){
@@ -219,6 +233,31 @@ public Piece[][] move(Point start, Point fin){
 	
 	//return the new array with the pieces switched
 	return a;
+}
+
+public void isThreatened (Point p){
+	//creates an instance of Bobby that thinks it is the enemy team
+	Bobby other =new Bobby(!color, board);
+	//arraylist of the all the locations of the pieces that threaten your piece
+	ArrayList<Point> threats=new ArrayList<Point>();
+	//go through each of the possible moves the enemy team can make by going through the all 
+	//pieces and all the moves that those pieces can make
+	for(int i=0;i<other.getMoves().size();i++){
+		for(int k=2;k<other.getMoves().get(i).size();k++){
+			//create a new point with the location of the point where the enemy piece can move
+			Point temp=new Point((Point)other.getMoves().get(i).get(k));
+			//if that location is the same as your piece, add that location to the array
+			if(temp.equals(p)){
+				threats.add(temp);
+			}
+		}
+	}
+	
+	
+	
+
+	
+	
 }
 
 }
