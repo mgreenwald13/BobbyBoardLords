@@ -212,39 +212,39 @@ public class Bobby {
 				
 				
 				
-				if ((x-1)>0 && (y+1)<8) a.add(new Point(x-1,y+1));
-				if ((x-2)>0 && (y+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
-				if ((x-3)>0 && (y+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
-				if ((x-4)>0 && (y+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
-				if ((x-5)>0 && (y+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
-				if ((x-6)>0 && (y+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
-				if ((x-7)>0 && (y+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
+				if ((x-1)>=0 && (y+1)<8) a.add(new Point(x-1,y+1));
+				if ((x-2)>=0 && (y+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
+				if ((x-3)>=0 && (y+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
+				if ((x-4)>=0 && (y+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
+				if ((x-5)>=0 && (y+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
+				if ((x-6)>=0 && (y+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
+				if ((x-7)>=0 && (y+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
 				
 				
 				//the 'adding' stops as soon as the bishop hits a board. this removes the board from the possible moves array if it is of the same color as our bishop
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y-1)>0 && (x+1)<8) a.add(new Point(x+1,y-1));
-				if ((y-2)>0 && (x+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
-				if ((y-3)>0 && (x+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
-				if ((y-4)>0 && (x+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
-				if ((y-5)>0 && (x+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
-				if ((y-6)>0 && (x+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
-				if ((y-7)>0 && (x+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
+				if ((y-1)>=0 && (x+1)<8) a.add(new Point(x+1,y-1));
+				if ((y-2)>=0 && (x+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
+				if ((y-3)>=0 && (x+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
+				if ((y-4)>=0 && (x+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
+				if ((y-5)>=0 && (x+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
+				if ((y-6)>=0 && (x+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
+				if ((y-7)>=0 && (x+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
 				
 				
 				//the 'adding' stops as soon as the bishop hits a board. this removes the board from the possible moves array if it is of the same color as our bishop
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y-1)>0 && (x-1)>0) a.add(new Point(x-1,y-1));
-				if ((y-2)>0 && (x-2)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
-				if ((y-3)>0 && (x-3)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
-				if ((y-4)>0 && (x-4)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
-				if ((y-5)>0 && (x-5)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
-				if ((y-6)>0 && (x-6)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
-				if ((y-7)>0 && (x-7)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
+				if ((y-1)>=0 && (x-1)>=0) a.add(new Point(x-1,y-1));
+				if ((y-2)>=0 && (x-2)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
+				if ((y-3)>=0 && (x-3)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
+				if ((y-4)>=0 && (x-4)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
+				if ((y-5)>=0 && (x-5)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
+				if ((y-6)>=0 && (x-6)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
+				if ((y-7)>=0 && (x-7)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
 
 				//the 'adding' stops as soon as the bishop hits a board. this removes the board from the possible moves array if it is of the same color as our bishop
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
@@ -284,38 +284,38 @@ public class Bobby {
 				
 				
 				
-				if ((x-1)>0 && (y)<8) a.add(new Point(x-1,y+1));
-				if ((x-2)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
-				if ((x-3)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
-				if ((x-4)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
-				if ((x-5)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
-				if ((x-6)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
-				if ((x-7)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
+				if ((x-1)>=0 && (y)<8) a.add(new Point(x-1,y+1));
+				if ((x-2)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
+				if ((x-3)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
+				if ((x-4)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
+				if ((x-5)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
+				if ((x-6)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
+				if ((x-7)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
 				
 				//the 'adding' stops as soon as the rook hits a board. this removes the board from the possible moves array if it is of the same color as our rook
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y-1)>0 && (x)<8) a.add(new Point(x+1,y-1));
-				if ((y-2)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
-				if ((y-3)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
-				if ((y-4)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
-				if ((y-5)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
-				if ((y-6)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
-				if ((y-7)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
+				if ((y-1)>=0 && (x)<8) a.add(new Point(x+1,y-1));
+				if ((y-2)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
+				if ((y-3)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
+				if ((y-4)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
+				if ((y-5)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
+				if ((y-6)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
+				if ((y-7)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
 				
 				
 				//the 'adding' stops as soon as the rook hits a board. this removes the board from the possible moves array if it is of the same color as our rook
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y+1)>0 && (x)>0) a.add(new Point(x-1,y-1));
-				if ((y+2)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
-				if ((y+3)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
-				if ((y+4)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
-				if ((y+5)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
-				if ((y+6)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
-				if ((y+7)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
+				if ((y+1)>=0 && (x)>=0) a.add(new Point(x-1,y-1));
+				if ((y+2)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
+				if ((y+3)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
+				if ((y+4)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
+				if ((y+5)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
+				if ((y+6)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
+				if ((y+7)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
 
 				
 				//the 'adding' stops as soon as the rook hits a board. this removes the board from the possible moves array if it is of the same color as our rook
@@ -358,38 +358,38 @@ public class Bobby {
 			
 				
 				
-				if ((x-1)>0 && (y)<8) a.add(new Point(x-1,y+1));
-				if ((x-2)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
-				if ((x-3)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
-				if ((x-4)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
-				if ((x-5)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
-				if ((x-6)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
-				if ((x-7)>0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
+				if ((x-1)>=0 && (y)<8) a.add(new Point(x-1,y+1));
+				if ((x-2)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
+				if ((x-3)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
+				if ((x-4)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
+				if ((x-5)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
+				if ((x-6)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
+				if ((x-7)>=0 && (y)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
 				
 				//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y-1)>0 && (x)<8) a.add(new Point(x+1,y-1));
-				if ((y-2)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
-				if ((y-3)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
-				if ((y-4)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
-				if ((y-5)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
-				if ((y-6)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
-				if ((y-7)>0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
+				if ((y-1)>=0 && (x)<8) a.add(new Point(x+1,y-1));
+				if ((y-2)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
+				if ((y-3)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
+				if ((y-4)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
+				if ((y-5)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
+				if ((y-6)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
+				if ((y-7)>=0 && (x)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
 				
 				
 				//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
 						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
-				if ((y+1)>0 && (x)>0) a.add(new Point(x-1,y-1));
-				if ((y+2)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
-				if ((y+3)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
-				if ((y+4)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
-				if ((y+5)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
-				if ((y+6)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
-				if ((y+7)>0 && (x)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
+				if ((y+1)>=0 && (x)>=0) a.add(new Point(x-1,y-1));
+				if ((y+2)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
+				if ((y+3)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
+				if ((y+4)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
+				if ((y+5)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
+				if ((y+6)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
+				if ((y+7)>=0 && (x)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
 
 				
 				//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
@@ -410,39 +410,39 @@ public class Bobby {
 						
 						
 						
-						if ((x-1)>0 && (y+1)<8) a.add(new Point(x-1,y+1));
-						if ((x-2)>0 && (y+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
-						if ((x-3)>0 && (y+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
-						if ((x-4)>0 && (y+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
-						if ((x-5)>0 && (y+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
-						if ((x-6)>0 && (y+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
-						if ((x-7)>0 && (y+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
+						if ((x-1)>=0 && (y+1)<8) a.add(new Point(x-1,y+1));
+						if ((x-2)>=0 && (y+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y+2));
+						if ((x-3)>=0 && (y+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y+3));
+						if ((x-4)>=0 && (y+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y+4));
+						if ((x-5)>=0 && (y+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y+5));
+						if ((x-6)>=0 && (y+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y+6));
+						if ((x-7)>=0 && (y+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y+7));
 						
 						
 						//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
 								if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 						
 						
-						if ((y-1)>0 && (x+1)<8) a.add(new Point(x+1,y-1));
-						if ((y-2)>0 && (x+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
-						if ((y-3)>0 && (x+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
-						if ((y-4)>0 && (x+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
-						if ((y-5)>0 && (x+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
-						if ((y-6)>0 && (x+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
-						if ((y-7)>0 && (x+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
+						if ((y-1)>=0 && (x+1)<8) a.add(new Point(x+1,y-1));
+						if ((y-2)>=0 && (x+2)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+2,y-2));
+						if ((y-3)>=0 && (x+3)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+3,y-3));
+						if ((y-4)>=0 && (x+4)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+4,y-4));
+						if ((y-5)>=0 && (x+5)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+5,y-5));
+						if ((y-6)>=0 && (x+6)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+6,y-6));
+						if ((y-7)>=0 && (x+7)<8 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x+7,y-7));
 						
 						
 						//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
 								if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 						
 						
-						if ((y-1)>0 && (x-1)>0) a.add(new Point(x-1,y-1));
-						if ((y-2)>0 && (x-2)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
-						if ((y-3)>0 && (x-3)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
-						if ((y-4)>0 && (x-4)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
-						if ((y-5)>0 && (x-5)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
-						if ((y-6)>0 && (x-6)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
-						if ((y-7)>0 && (x-7)>0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
+						if ((y-1)>=0 && (x-1)>=0) a.add(new Point(x-1,y-1));
+						if ((y-2)>=0 && (x-2)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-2,y-2));
+						if ((y-3)>=0 && (x-3)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-3,y-3));
+						if ((y-4)>=0 && (x-4)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-4,y-4));
+						if ((y-5)>=0 && (x-5)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-5,y-5));
+						if ((y-6)>=0 && (x-6)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-6,y-6));
+						if ((y-7)>=0 && (x-7)>=0 && board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].toString().charAt(1) == 'X') a.add(new Point(x-7,y-7));
 
 						//the 'adding' stops as soon as the queen hits a board. this removes the board from the possible moves array if it is of the same color as our queen
 								if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
@@ -534,12 +534,28 @@ public void isThreatened (Point p){
 			}
 		}
 	}
-	
-	
-	
-
-	
-	
+		
 }
+
+
+public static void main (String[] args)
+{
+	Board b= new Board();
+	Bobby BoardLords=new Bobby(true, b);
+
+	BoardLords.move(new Point(4,6),new Point(4,4));
+	//send board/receive board
+	BoardLords.move(new Point(3,7),new Point(5,5));
+	//send board/receive board
+	//check to make sure its okay if bishop can move to 2,4
+	BoardLords.move(new Point(5,7),new Point(2,4));
+	//send board/receive board
+	//make sure black pawn is at 5,1
+	//make sure queen can take black pawn at 5,1
+	BoardLords.move(new Point(5,5),new Point(5,1));
+	//check for checkmate
+	//cele hard
+}
+
 
 }
