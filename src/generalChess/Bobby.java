@@ -126,8 +126,8 @@ public class Bobby {
 						poss.get(t).add(p);
 					}
 				}
-				}
-			
+				
+			}
 			//Knight
 			int xCoord=(int)loc.getX();
 			int yCoord=(int)loc.getY();
@@ -548,6 +548,7 @@ public static void main (String[] args)
 	BoardLords.move(new Point(3,7),new Point(5,5));
 	//send board/receive board
 	//check to make sure its okay if bishop can move to 2,4
+	BoardLords.getMoves();
 	BoardLords.move(new Point(5,7),new Point(2,4));
 	//send board/receive board
 	//make sure black pawn is at 5,1
