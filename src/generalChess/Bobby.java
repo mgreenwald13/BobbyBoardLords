@@ -13,6 +13,9 @@ public class Bobby {
 		return color;
 	}
 	
+	public Piece[][] accessBoard(){
+		return board;
+	}
 	public Bobby(boolean b, Board start){
 		color=b;
 		getBoard(start);
@@ -547,13 +550,62 @@ public static void main (String[] args)
 	//send board/receive board
 	BoardLords.move(new Point(3,7),new Point(5,5));
 	//send board/receive board
+	
 	//check to make sure its okay if bishop can move to 2,4
-	BoardLords.getMoves();
-	BoardLords.move(new Point(5,7),new Point(2,4));
+				
+	//arraylist of possible moves
+	ArrayList<ArrayList> a=	BoardLords.getMoves();
+	
+	//finds index of first bishop
+	
+	int index=-1;
+	
+	for (int x=0; x<a.size(); x++)
+	{
+		if(a.get(x).toString().charAt(1)==('B')) //is it at charAt 1?
+		{
+		index=x;
+		}
+	}
+	//if bishops exist check to make sure its okay if bishop can move to 2,4
+	boolean canIMoveMyFuckingBishop=false;
+	if(index!=-1){	
+	for (int x=0; x<a.get(index).size(); x++)
+	{
+		if(a.get(index).get(x).equals(new Point (2,4))) canIMoveMyFuckingBishop=true;
+	}
+	}
+	
+	
+	//finds index of second bishop
+		
+		for (int x=index+1; x<a.size(); x++)
+		{
+			if(a.get(x).toString().charAt(1)==('B')) //is it at charAt 1?
+			{
+			index=x;
+			}
+		}
+		//if bishops exist check to make sure its okay if bishop can move to 2,4
+	
+		if(index!=-1){	
+		for (int x=0; x<a.get(index).size(); x++)
+		{
+			if(a.get(index).get(x).equals(new Point (2,4))) canIMoveMyFuckingBishop=true;
+		}
+		}
+	
+if(canIMoveMyFuckingBishop=true) BoardLords.move(new Point(5,7),new Point(2,4));
 	//send board/receive board
+	
+	
 	//make sure black pawn is at 5,1
 	//make sure queen can take black pawn at 5,1
-	BoardLords.move(new Point(5,5),new Point(5,1));
+boolean isblackpawnreadytogetpwned=false;
+if(b.)  isblackpawnreadytogetpwned=true;
+index=-1;
+
+BoardLords.move(new Point(5,5),new Point(5,1));
 	//check for checkmate
 	//cele hard
 }
