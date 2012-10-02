@@ -540,6 +540,50 @@ public void isThreatened (Point p){
 		
 }
 
+public int checkMate(){
+	//checks if in checkmate or if have checkmated;
+	int checkmate= 0;
+	Board b= new Board();
+	Bobby BoardLords=new Bobby(true, b);
+	ArrayList<ArrayList> a=	BoardLords.getMoves();
+	
+	//check if we have been checkmated, checkmated = -1
+	int index=-1;
+	
+	for (int x=0; x<a.size(); x++)
+	{
+		if(a.get(x).toString().charAt(1)==('K'))
+		{
+		index=x;
+		}
+	}
+	
+	if((index!=-1) && (a.get(index).size()==2)) return checkmate=-1;
+	//if size of array containing kings moves is 2 (first index being 'K' and second index being current 
+	//position and that is it then you're in checkmate (assumes king wont have a possibleMove() of going into check)
+	
+	
+	
+	//check if we have checkmated opponent, checkmated opponent = 1
+	Bobby opponentsPieces=new Bobby(false, b);
+	ArrayList<ArrayList> opponents=	opponentsPieces.getMoves();
+	
+	index=-1;
+	
+	for (int x=0; x<opponents.size(); x++)
+	{
+		if(opponents.get(x).toString().charAt(1)==('K'))
+		{
+		index=x;
+		}
+	}
+	
+	if((index!=-1) && (opponents.get(index).size()==2)) return checkmate=1; 
+	//if size of array containing kings moves is 2 (first index being 'K' and second index being current 
+	//position and that is it then you're in checkmate (assumes king wont have a possibleMove() of going into check)
+	
+	return checkmate; //0=not in checkmate
+}
 
 public static void main (String[] args)
 {
@@ -568,11 +612,11 @@ public static void main (String[] args)
 		}
 	}
 	//if bishops exist check to make sure its okay if bishop can move to 2,4
-	boolean canIMoveMyFuckingBishop=false;
+	
 	if(index!=-1){	
 	for (int x=0; x<a.get(index).size(); x++)
 	{
-		if(a.get(index).get(x).equals(new Point (2,4))) canIMoveMyFuckingBishop=true;
+		if(a.get(index).get(x).equals(new Point (2,4))) BoardLords.move(new Point(5,7),new Point(2,4));
 	}
 	}
 	
@@ -591,11 +635,10 @@ public static void main (String[] args)
 		if(index!=-1){	
 		for (int x=0; x<a.get(index).size(); x++)
 		{
-			if(a.get(index).get(x).equals(new Point (2,4))) canIMoveMyFuckingBishop=true;
+			if(a.get(index).get(x).equals(new Point (2,4))) BoardLords.move(new Point(5,7),new Point(2,4));
 		}
 		}
-	
-if(canIMoveMyFuckingBishop=true) BoardLords.move(new Point(5,7),new Point(2,4));
+
 	//send board/receive board
 	
 	
@@ -606,13 +649,27 @@ boolean isblackpawnreadytogetpwned=false;
 
 Piece[][] oppPieces;
 oppPieces=BoardLords.accessBoard();
-Point x= new Point(oppPieces[5][1]);
-if(.charAt(1)=='P')
 
+if(oppPieces[5][1].getid().charAt(0)=='P') isblackpawnreadytogetpwned=true;
 index=-1;
 
-BoardLords.move(new Point(5,5),new Point(5,1));
+for (int x=index+1; x<a.size(); x++)
+{
+	if(a.get(x).toString().charAt(1)==('B')) //is it at charAt 1?
+	{
+	index=x;
+	}
+}
+//if bishops exists check to make sure its okay if bishop can move to 2,4
+if(index!=-1){	
+for (int x=0; x<a.get(index).size(); x++)
+{
+	if(a.get(index).get(x).equals(new Point (5,1))) BoardLords.move(new Point(5,5),new Point(5,1));
+}
+}
+
 	//check for checkmate
+if(BoardLords.checkMate()==1) System.out.println("WE WIN MOTHALICKAS");
 	//cele hard
 }
 
