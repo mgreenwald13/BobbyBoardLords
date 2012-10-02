@@ -18,6 +18,9 @@ public abstract class Piece {
 		color = b;
 		return b;
 	}
+	public String getid(){
+		return id;
+	}
 
 	public String toString(){
 		String x;

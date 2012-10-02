@@ -586,7 +586,7 @@ public static void main (String[] args)
 			index=x;
 			}
 		}
-		//if bishops exist check to make sure its okay if bishop can move to 2,4
+		//if bishops exists check to make sure its okay if bishop can move to 2,4
 	
 		if(index!=-1){	
 		for (int x=0; x<a.get(index).size(); x++)
@@ -602,7 +602,13 @@ if(canIMoveMyFuckingBishop=true) BoardLords.move(new Point(5,7),new Point(2,4));
 	//make sure black pawn is at 5,1
 	//make sure queen can take black pawn at 5,1
 boolean isblackpawnreadytogetpwned=false;
-if(b.)  isblackpawnreadytogetpwned=true;
+// find if black pawn is at 5,1 isblackpawnreadytogetpwned=true; !!!!
+
+Piece[][] oppPieces;
+oppPieces=BoardLords.accessBoard();
+Point x= new Point(oppPieces[5][1]);
+if(.charAt(1)=='P')
+
 index=-1;
 
 BoardLords.move(new Point(5,5),new Point(5,1));
