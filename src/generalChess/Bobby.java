@@ -34,7 +34,37 @@ public class Bobby {
 	public void getBoard(Piece[][] p){
 		for(int x=0;x<8;x++){
 			for (int y=0;y<8;y++){
-				board[x][y]=p[x][y];
+				char t=p[x][y].toString().charAt(1);
+				boolean c=p[x][y].getColor();
+				switch (t){
+				case 'P':
+					board[x][y]=new Pawn(c);
+					break;
+				case 'R':
+					board[x][y]=new Rook(c);
+					break;
+
+				case 'N':
+					board[x][y]=new Knight(c);
+					break;
+
+				case 'B':
+					board[x][y]=new Bishop(c);
+					break;
+
+				case 'K':
+					board[x][y]=new King(c);
+					break;
+
+				case 'Q':
+					board[x][y]=new Queen(c);
+					break;
+
+				case 'X':
+					board[x][y]=new Blank(true);
+					break;
+
+			}
 			}
 		}
 	}
@@ -48,28 +78,83 @@ public class Bobby {
 				switch (type){
 				case 'P':
 					board[x][y]=new Pawn(col);
+					break;
+
 				case 'R':
 					board[x][y]=new Rook(col);
+					break;
+
 				case 'N':
 					board[x][y]=new Knight(col);
+					break;
+
 				case 'B':
 					board[x][y]=new Bishop(col);
+					break;
+
 				case 'K':
 					board[x][y]=new King(col);
+					break;
+
 				case 'Q':
 					board[x][y]=new Queen(col);
+					break;
+
 				case 'X':
 					board[x][y]=new Blank(true);
+					break;
+
 			}}}
 	}
+	
+	public void rotateBoard90(){
+		Piece[][]arr=new Piece[8][8];
+		for(int x=0;x<8;x++){
+			for(int y=0;y<8;y++){
+				char type=board[x][y].toString().charAt(1);
+				boolean col=board[x][y].getColor();
+				switch (type){
+				case 'P':
+					board[y][x]=new Pawn(col);
+					break;
+
+				case 'R':
+					board[y][x]=new Rook(col);
+					break;
+
+				case 'N':
+					board[y][x]=new Knight(col);
+					break;
+
+				case 'B':
+					board[y][x]=new Bishop(col);
+					break;
+
+				case 'K':
+					board[y][x]=new King(col);
+					break;
+
+				case 'Q':
+					board[y][x]=new Queen(col);
+					break;
+
+				case 'X':
+					board[y][x]=new Blank(true);
+					break;
+
+			}
+			}
+		}
+	}
+	
+	
+	
 	//return moves in an array with the first row storing which piece it is and then all the subsequent rows storing the possible moves for that piece
 	
 	public ArrayList<ArrayList> getMoves(){
 		ArrayList<ArrayList> poss=new ArrayList<ArrayList>();
-		
 		//number of columns in ArrayList
 		int count=0;
-		
 		//makes the arraylist with a new column for each of your pieces
 		for (int x=0; x<8; x++){
 			for (int y=0; y<8; y++){
@@ -672,7 +757,7 @@ for (int x=0; x<a.get(index).size(); x++)
 
 	//check for checkmate
 if(BoardLords.checkMate()==1) System.out.println("WE WIN MOTHALICKAS");
-	//cele hard
+	//cele hard or lose
 }
 
 
