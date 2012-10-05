@@ -4,7 +4,7 @@ public class testClass {
 	public static void main (String[] args)
 	{
 		Board b= new Board();
-		Bobby BoardLords=new Bobby(true, b);
+		Bobby BoardLords=new Bobby(false, b);
 	
 		
 		System.out.print(BoardLords.getMoves());

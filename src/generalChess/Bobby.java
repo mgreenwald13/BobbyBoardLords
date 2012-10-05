@@ -18,14 +18,17 @@ public class Bobby {
 	}
 	public Bobby(boolean b, Board start){
 		color=b;
+		board=new Piece[8][8];
 		getBoard(start);
 		numPiecesLeft=16;
 	}
 	
 	public Bobby(boolean b, Piece[][] start){
 		color=b;
+		board=new Piece[8][8];
 		getBoard(start);
 		numPiecesLeft=16;
+
 	}
 	
 	public void getBoard(Piece[][] p){
@@ -59,7 +62,6 @@ public class Bobby {
 					board[x][y]=new Blank(true);
 			}}}
 	}
-	
 	//return moves in an array with the first row storing which piece it is and then all the subsequent rows storing the possible moves for that piece
 	
 	public ArrayList<ArrayList> getMoves(){
