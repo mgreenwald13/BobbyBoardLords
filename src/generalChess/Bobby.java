@@ -107,47 +107,16 @@ public class Bobby {
 			}}}
 	}
 	
-	public void rotateBoard90(){
-		Piece[][]arr=new Piece[8][8];
-		for(int x=0;x<8;x++){
-			for(int y=0;y<8;y++){
-				char type=board[x][y].toString().charAt(1);
-				boolean col=board[x][y].getColor();
-				switch (type){
-				case 'P':
-					board[y][x]=new Pawn(col);
-					break;
-
-				case 'R':
-					board[y][x]=new Rook(col);
-					break;
-
-				case 'N':
-					board[y][x]=new Knight(col);
-					break;
-
-				case 'B':
-					board[y][x]=new Bishop(col);
-					break;
-
-				case 'K':
-					board[y][x]=new King(col);
-					break;
-
-				case 'Q':
-					board[y][x]=new Queen(col);
-					break;
-
-				case 'X':
-					board[y][x]=new Blank(true);
-					break;
-
+	
+	public void printBoard(){
+		for (int i=0; i<getMoves().size();i++){
+			for(int k=0;k<getMoves().get(i).size();k++){
+				System.out.print(getMoves().get(i).get(k));
+				System.out.print(" ,");
 			}
-			}
+			System.out.println();
 		}
 	}
-	
-	
 	
 	//return moves in an array with the first row storing which piece it is and then all the subsequent rows storing the possible moves for that piece
 	
