@@ -52,7 +52,7 @@ public class Board {
 		for(int y=0; y<8; y++){
 	
 			for(int x=0; x<8; x++){
-				System.out.print(arr[y][x].toString()+" | ");
+				System.out.print(arr[x][y].toString()+" | ");
 			}
 		
 			System.out.println();
@@ -61,9 +61,5 @@ public class Board {
 		return ; 
 	}
 	
-	public static void main (String args[]){
-		Board a = new Board();
-		a.printBoard();
-	}
 	
 }

@@ -70,11 +70,10 @@ public class Bobby {
 	}
 	
 	public void getBoard(Board b){
-		Piece[][] arr=b.getBoard();
 		for(int x=0;x<8;x++){
 			for(int y=0;y<8;y++){
-				char type=arr[x][y].toString().charAt(1);
-				boolean col=arr[x][y].getColor();
+				char type=b.getBoard()[x][y].toString().charAt(1);
+				boolean col=b.getBoard()[x][y].getColor();
 				switch (type){
 				case 'P':
 					board[x][y]=new Pawn(col);
@@ -107,7 +106,7 @@ public class Bobby {
 			}}}
 	}
 	
-	
+	///testing getMoves()
 	public void printBoard(){
 		for (int i=0; i<getMoves().size();i++){
 			for(int k=0;k<getMoves().get(i).size();k++){
@@ -116,6 +115,12 @@ public class Bobby {
 			}
 			System.out.println();
 		}
+	}
+	
+	
+	
+	public void p(){
+		System.out.print(getMoves().get(8).size());
 	}
 	
 	//return moves in an array with the first row storing which piece it is and then all the subsequent rows storing the possible moves for that piece
@@ -281,7 +286,7 @@ public class Bobby {
 				
 				
 				//the 'adding' stops as soon as the bishop hits a board. this removes the board from the possible moves array if it is of the same color as our bishop
-						if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
+				if(board[(int)(a.get(a.size()-1).getX())][(int)(a.get(a.size()-1).getY())].getColor() == color) a.remove(a.size()-1);
 				
 				
 				if ((y-1)>=0 && (x+1)<8) a.add(new Point(x+1,y-1));
