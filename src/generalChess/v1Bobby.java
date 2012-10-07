@@ -22,36 +22,36 @@ public class v1Bobby {
 	}
 	
 	public void getBoard(Board b){
-		for (int x=0;x<8;x++){
-			for(int y=0;y<8;y++){
+		for (int y=0;y<8;y++){
+			for(int x=0;x<8;x++){
 				char t=b.getBoard()[x][y].toString().charAt(1);
 				boolean tt=b.getBoard()[x][y].getColor();
 				switch(t){
 				case 'P':
-					this.b[y][x]=new Pawn(tt);
+					this.b[x][y]=new Pawn(tt);
 					break;
 				case 'R':
-					this.b[y][x]=new Rook(tt);
+					this.b[x][y]=new Rook(tt);
 					break;
 
 				case 'N':
-					this.b[y][x]=new Knight(tt);
+					this.b[x][y]=new Knight(tt);
 					break;
 
 				case 'B':
-					this.b[y][x]=new Bishop(tt);
+					this.b[x][y]=new Bishop(tt);
 					break;
 
 				case 'K':
-					this.b[y][x]=new King(tt);
+					this.b[x][y]=new King(tt);
 					break;
 
 				case 'Q':
-					this.b[y][x]=new Queen(tt);
+					this.b[x][y]=new Queen(tt);
 					break;
 
 				case 'X':
-					this.b[y][x]=new Blank(true);
+					this.b[x][y]=new Blank(true);
 					break;
 
 				}
@@ -60,36 +60,36 @@ public class v1Bobby {
 	}
 	
 	public void move(int ax, int ay, int bx, int by){
-		char t=this.b[ay][ax].toString().charAt(1);
-		boolean c=this.b[ay][ax].getColor();
+		char t=this.b[ax][ay].toString().charAt(1);
+		boolean c=this.b[ax][ay].getColor();
 		switch(t){
 		case 'P':
-			this.b[by][bx]=new Pawn(c);
+			this.b[bx][by]=new Pawn(c);
 			break;
 		case 'R':
-			this.b[by][bx]=new Rook(c);
+			this.b[bx][by]=new Rook(c);
 			break;
 		case 'N':
-			this.b[by][bx]=new Knight(c);
+			this.b[bx][by]=new Knight(c);
 			break;
 		case 'B':
-			this.b[by][bx]=new Bishop(c);
+			this.b[bx][by]=new Bishop(c);
 			break;
 		case 'K':
-			this.b[by][bx]=new King(c);
+			this.b[bx][by]=new King(c);
 			break;
 		case 'Q':
-			this.b[by][bx]=new Queen(c);
+			this.b[bx][by]=new Queen(c);
 			break;
 		}
 		
-		this.b[ay][ax]=new Blank(true);
+		this.b[ax][ay]=new Blank(true);
 	}
 	
 	public void printBoard(){
 		for(int x=0;x<8;x++){
 			for(int y=0; y<8; y++){
-				System.out.print(b[x][y]+" | ");
+				System.out.print(b[y][x]+" | ");
 			}
 			System.out.println();
 		}
@@ -131,16 +131,17 @@ public class v1Bobby {
 		return d;
 	}
 	
+	//possible queen moves
 	public ArrayList<Point> qMoves(){
-		ArrayList<Point> a=new ArrayList();
+		ArrayList<Point> d=new ArrayList();
 		
-		return a;
+		return d;
 	}
 	
 	public ArrayList<Point> rMoves(){
-		ArrayList<Point> a=new ArrayList();
+		ArrayList<Point> d=new ArrayList();
 		
-		return a;
+		return d;
 	}
 	
 	public ArrayList<Point> nMoves(){
@@ -155,10 +156,56 @@ public class v1Bobby {
 		return a;
 	}
 	
-	public ArrayList<Point> pMoves(){
-		ArrayList<Point> a=new ArrayList();
+	public ArrayList<ArrayList> pMoves(){
+		ArrayList<ArrayList>v=new ArrayList<ArrayList>();
+		for (int a=0;a<8;a++){
+			for(int b=0;b<8;b++){
+				if(this.b[b][a].toString().charAt(1)=='P'&&this.b[b][a].getColor()==color){
+					ArrayList d=new ArrayList();
+					d.add(this.b[b][a]);
+					d.add(new Point(b, a));
+					if(color==false)if(b==1&&this.b[b][a+2].toString().charAt(1)=='X')d.add(new Point(b, a+2));
+					if(a+1<8&&this.b[b][a+1].toString().charAt(1)=='X')d.add(new Point(b, a+1));
+					if(b+1<8&&a+1<8&&this.b[b+1][a+1].toString().charAt(1)!='X'&&this.b[b+1][a+1].getColor()==!color)d.add(new Point(b+1, a+1));
+					if(b-1>-1&&a+1<8&&this.b[b-1][a+1].toString().charAt(1)!='X'&&this.b[b-1][a+1].getColor()==!color)d.add(new Point(b-1, a+1));
+					
+					for(int i=0;i<d.size();i++){
+						System.out.println(d.get(i));
+					}
+				}
+			}
+		}
 		
-		return a;
+		
+		
+		/*
+		for(int y=0;y<8;y++){
+			for(int x=0;x<8;x++){
+				if (b[x][y].getColor()==color&&b[x][y].toString().charAt(1)=='P'){
+					ArrayList d=new ArrayList();
+					d.add(b[x][y]);
+					
+					if(color==false){
+						if(y==1&&b[x][y+2].toString().charAt(1)=='X')d.add(new Point(x, y+2));
+						if(y+1<8&&b[x][y+1].toString().charAt(1)=='X')d.add(new Point(x, y+1));
+						if(x+1<8&&y+1<8&&(b[x+1][y+1].toString().charAt(1)!='X'&&b[x+1][y+1].getColor()!=color))d.add(new Point(x+1, y+1));
+						if(x-1<8&&y+1<8&&(b[x-1][y+1].toString().charAt(1)!='X'&&b[x-1][y+1].getColor()!=color))d.add(new Point(x-1, y+1));
+					}
+					
+					if(color==true){
+						if(x==6&&b[y][x-2].toString().charAt(1)=='X')d.add(new Point(y, x-2));
+						if(x-1>0&&b[y][x-1].toString().charAt(1)=='X')d.add(new Point(y, x-1));
+						if(y+1<8&&x-1>0&&(b[y+1][x-1].toString().charAt(1)!='X'&&b[y+1][x-1].getColor()!=color))d.add(new Point(y+1, x-1));
+						if(y-1<8&&x-1>0&&(b[y-1][x-1].toString().charAt(1)!='X'&&b[y-1][x-1].getColor()!=color))d.add(new Point(y-1, x-1));
+					}
+					v.add(d);
+			}
+		}}
+		*/
+			
+		return v;
+		
+		
 	}
 	
 	
@@ -167,12 +214,14 @@ public class v1Bobby {
 	public static void main(String[] args){
 		Board d=new Board();
 		boolean color=true;
-		v1Bobby a=new v1Bobby(d, true);
-		a.move(4, 7, 4, 4);
+		v1Bobby a=new v1Bobby(d, false);
+		a.printBoard();
+		a.move(4, 0, 4, 2);
 		a.printBoard();
 		for(int i=0;i<a.kMoves().size();i++){
 			System.out.println(a.kMoves().get(i));
 		}
+		
 		
 		/*
 		if(a.color==true){
