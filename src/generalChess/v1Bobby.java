@@ -100,13 +100,15 @@ public class v1Bobby {
 
 	}
 	
+	
+	//returns possible king moves
 	public ArrayList<Point> kMoves(){
-		ArrayList<Point> a=new ArrayList();
+		ArrayList<Point> d=new ArrayList();
 		int x=-1;
 		int y=-1;
 		for(int j=0;j<8;j++){
-			for(int k=0;k<9;k++){
-				if (b[j][k].getColor()==color&&b[x][y].toString().charAt(1)=='K'){
+			for(int k=0;k<8;k++){
+				if (b[j][k].getColor()==color&&b[j][k].toString().charAt(1)=='K'){
 					x=j;y=k;
 					break;
 				}
@@ -116,9 +118,17 @@ public class v1Bobby {
 			return null;
 		}
 		else{
-			
+			for(int a=x-1;a<x+2;a++){
+				for(int b=y-1;b<y+2;b++){
+					if(a>-1&&a<8&&b>-1&&b<8){
+						if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color){
+							d.add(new Point(a,b));
+						}
+					}
+				}
+			}
 		}
-		return a;
+		return d;
 	}
 	
 	public ArrayList<Point> qMoves(){
@@ -157,10 +167,14 @@ public class v1Bobby {
 	public static void main(String[] args){
 		Board d=new Board();
 		boolean color=true;
-		
-		
 		v1Bobby a=new v1Bobby(d, true);
+		a.move(4, 7, 4, 4);
+		a.printBoard();
+		for(int i=0;i<a.kMoves().size();i++){
+			System.out.println(a.kMoves().get(i));
+		}
 		
+		/*
 		if(a.color==true){
 		a.move(4, 6, 4, 4);
 		a.printBoard();
@@ -171,6 +185,7 @@ public class v1Bobby {
 		a.move(5, 5, 5, 1);
 		a.printBoard();
 		}
+		*/
 				
 }
 	
