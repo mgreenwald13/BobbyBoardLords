@@ -144,10 +144,29 @@ public class v1Bobby {
 		return d;
 	}
 	
-	public ArrayList<Point> nMoves(){
-		ArrayList<Point> a=new ArrayList();
-		
-		return a;
+	public ArrayList<ArrayList> nMoves(){
+		ArrayList<ArrayList>v=new ArrayList<ArrayList>();
+		for(int y=0;y<8;y++){
+			for(int x=0;x<8;x++){
+				if (b[x][y].getColor()==color&&b[x][y].toString().charAt(1)=='N'){
+					ArrayList d=new ArrayList();
+					d.add(b[x][y]);
+					d.add(new Point(x, y));
+					if(x-2>-1&&y-1>-1&&(b[x-2][y-1].toString().charAt(1)=='X'||b[x-2][y-1].getColor()==!color))d.add(new Point(x-2, y-1));
+					if(x-1>-1&&y-2>-1&&(b[x-1][y-2].toString().charAt(1)=='X'||b[x-1][y-2].getColor()==!color))d.add(new Point(x-1, y-2));
+					
+					if(x-2>-1&&y+1<8&&(b[x-2][y+1].toString().charAt(1)=='X'||b[x-2][y+1].getColor()==!color))d.add(new Point(x-2, y+1));
+					if(x-1>-1&&y+2<8&&(b[x-1][y+2].toString().charAt(1)=='X'||b[x-1][y+2].getColor()==!color))d.add(new Point(x-1, y+2));
+					
+					if(x+2<8&&y+1<8&&(b[x+2][y+1].toString().charAt(1)=='X'||b[x+2][y+1].getColor()==!color))d.add(new Point(x+2, y+1));
+					if(x+1<8&&y+2<8&&(b[x+1][y+2].toString().charAt(1)=='X'||b[x+1][y+2].getColor()==!color))d.add(new Point(x+1, y+2));
+					
+					if(x+1<8&&y-2>-1&&(b[x+1][y-2].toString().charAt(1)=='X'||b[x+1][y-2].getColor()==!color))d.add(new Point(x+1, y-2));
+					if(x+2<8&&y-1>-1&&(b[x+2][y-1].toString().charAt(1)=='X'||b[x+2][y-1].getColor()==!color))d.add(new Point(x+2, y-1));
+					v.add(d);
+			}
+		}}	
+		return v;
 	}
 	
 	public ArrayList<Point> bMoves(){
@@ -163,6 +182,7 @@ public class v1Bobby {
 				if (b[x][y].getColor()==color&&b[x][y].toString().charAt(1)=='P'){
 					ArrayList d=new ArrayList();
 					d.add(b[x][y]);
+					d.add(new Point(x, y));
 					if(color==false){
 						if(y==1&&b[x][y+2].toString().charAt(1)=='X')d.add(new Point(x, y+2));
 						if(y+1<8&&b[x][y+1].toString().charAt(1)=='X')d.add(new Point(x, y+1));
@@ -178,11 +198,8 @@ public class v1Bobby {
 					}
 					v.add(d);
 			}
-		}}
-			
+		}}	
 		return v;
-		
-		
 	}
 	
 	
@@ -193,12 +210,14 @@ public class v1Bobby {
 		boolean color=true;
 		v1Bobby a=new v1Bobby(d, false);
 		a.printBoard();
-		for(int i=0;i<a.pMoves().get(1).size();i++){
-			System.out.println(a.pMoves().get(1).get(i));
+		a.move(6, 0, 4, 4);
+		for(int i=0;i<a.nMoves().get(1).size();i++){
+			System.out.println(a.nMoves().get(1).get(i));
 		}
 		
 		
 		/*
+		 * 4 move checkmate with white
 		if(a.color==true){
 		a.move(4, 6, 4, 4);
 		a.printBoard();
