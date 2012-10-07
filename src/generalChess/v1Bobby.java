@@ -158,38 +158,16 @@ public class v1Bobby {
 	
 	public ArrayList<ArrayList> pMoves(){
 		ArrayList<ArrayList>v=new ArrayList<ArrayList>();
-		for (int a=0;a<8;a++){
-			for(int b=0;b<8;b++){
-				if(this.b[b][a].toString().charAt(1)=='P'&&this.b[b][a].getColor()==color){
-					ArrayList d=new ArrayList();
-					d.add(this.b[b][a]);
-					d.add(new Point(b, a));
-					if(color==false)if(b==1&&this.b[b][a+2].toString().charAt(1)=='X')d.add(new Point(b, a+2));
-					if(a+1<8&&this.b[b][a+1].toString().charAt(1)=='X')d.add(new Point(b, a+1));
-					if(b+1<8&&a+1<8&&this.b[b+1][a+1].toString().charAt(1)!='X'&&this.b[b+1][a+1].getColor()==!color)d.add(new Point(b+1, a+1));
-					if(b-1>-1&&a+1<8&&this.b[b-1][a+1].toString().charAt(1)!='X'&&this.b[b-1][a+1].getColor()==!color)d.add(new Point(b-1, a+1));
-					
-					for(int i=0;i<d.size();i++){
-						System.out.println(d.get(i));
-					}
-				}
-			}
-		}
-		
-		
-		
-		/*
 		for(int y=0;y<8;y++){
 			for(int x=0;x<8;x++){
 				if (b[x][y].getColor()==color&&b[x][y].toString().charAt(1)=='P'){
 					ArrayList d=new ArrayList();
 					d.add(b[x][y]);
-					
 					if(color==false){
 						if(y==1&&b[x][y+2].toString().charAt(1)=='X')d.add(new Point(x, y+2));
 						if(y+1<8&&b[x][y+1].toString().charAt(1)=='X')d.add(new Point(x, y+1));
 						if(x+1<8&&y+1<8&&(b[x+1][y+1].toString().charAt(1)!='X'&&b[x+1][y+1].getColor()!=color))d.add(new Point(x+1, y+1));
-						if(x-1<8&&y+1<8&&(b[x-1][y+1].toString().charAt(1)!='X'&&b[x-1][y+1].getColor()!=color))d.add(new Point(x-1, y+1));
+						if(x-1>-1&&y+1<8&&(b[x-1][y+1].toString().charAt(1)!='X'&&b[x-1][y+1].getColor()!=color))d.add(new Point(x-1, y+1));
 					}
 					
 					if(color==true){
@@ -201,7 +179,6 @@ public class v1Bobby {
 					v.add(d);
 			}
 		}}
-		*/
 			
 		return v;
 		
@@ -216,10 +193,8 @@ public class v1Bobby {
 		boolean color=true;
 		v1Bobby a=new v1Bobby(d, false);
 		a.printBoard();
-		a.move(4, 0, 4, 2);
-		a.printBoard();
-		for(int i=0;i<a.kMoves().size();i++){
-			System.out.println(a.kMoves().get(i));
+		for(int i=0;i<a.pMoves().get(1).size();i++){
+			System.out.println(a.pMoves().get(1).get(i));
 		}
 		
 		
