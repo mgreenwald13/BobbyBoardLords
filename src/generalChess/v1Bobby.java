@@ -2,6 +2,7 @@ package generalChess;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class v1Bobby {
 	boolean color;
@@ -132,14 +133,14 @@ public class v1Bobby {
 	}
 	
 	//possible queen moves
-	public ArrayList<Point> qMoves(){
-		ArrayList<Point> d=new ArrayList();
+	public ArrayList<ArrayList> qMoves(){
+		ArrayList<ArrayList> d=new ArrayList<ArrayList>();
 		
 		return d;
 	}
 	
-	public ArrayList<Point> rMoves(){
-		ArrayList<Point> d=new ArrayList();
+	public ArrayList<ArrayList> rMoves(){
+		ArrayList<ArrayList> d=new ArrayList<ArrayList>();
 		
 		return d;
 	}
@@ -169,8 +170,8 @@ public class v1Bobby {
 		return v;
 	}
 	
-	public ArrayList<Point> bMoves(){
-		ArrayList<Point> a=new ArrayList();
+	public ArrayList<ArrayList> bMoves(){
+		ArrayList<ArrayList> a=new ArrayList<ArrayList>();
 		
 		return a;
 	}
@@ -202,6 +203,26 @@ public class v1Bobby {
 		return v;
 	}
 	
+	public void randomMove(){
+		//makes an arraylist of all the arraylists for each point
+		//it's hierarchical - will choose from pawns first, then knights, then bishops, then rooks, then queens, then kings
+		ArrayList<ArrayList> a=new ArrayList<ArrayList>();
+		a.add(pMoves());
+		a.add(nMoves());
+		a.add(bMoves());
+		a.add(rMoves());
+		a.add(qMoves());
+		a.add(kMoves());
+		
+		//picks the next type of piece
+		int i=0;
+		while(a.get(i).size()<=2)i++;
+		
+		Random r=new Random();
+		Point p=new Point((Point)a.get(i).get(r.nextInt(a.get(i).size())));
+		
+
+	}
 	
 	
 	
@@ -209,15 +230,11 @@ public class v1Bobby {
 		Board d=new Board();
 		boolean color=true;
 		v1Bobby a=new v1Bobby(d, false);
-		a.printBoard();
-		a.move(6, 0, 4, 4);
-		for(int i=0;i<a.nMoves().get(1).size();i++){
-			System.out.println(a.nMoves().get(1).get(i));
-		}
-		
 		
 		/*
 		 * 4 move checkmate with white
+		 * */
+		
 		if(a.color==true){
 		a.move(4, 6, 4, 4);
 		a.printBoard();
@@ -228,7 +245,6 @@ public class v1Bobby {
 		a.move(5, 5, 5, 1);
 		a.printBoard();
 		}
-		*/
 				
 }
 	
