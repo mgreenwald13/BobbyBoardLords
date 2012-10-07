@@ -103,8 +103,9 @@ public class v1Bobby {
 	
 	
 	//returns possible king moves
-	public ArrayList<Point> kMoves(){
-		ArrayList<Point> d=new ArrayList();
+	public ArrayList<ArrayList> kMoves(){
+		ArrayList<ArrayList> d=new ArrayList();
+		ArrayList g=new ArrayList();
 		int x=-1;
 		int y=-1;
 		for(int j=0;j<8;j++){
@@ -115,6 +116,8 @@ public class v1Bobby {
 				}
 			}
 		}
+		g.add(b[x][y]);
+		g.add(new Point(x, y));
 		if (x==-1||y==-1){
 			return null;
 		}
@@ -123,12 +126,13 @@ public class v1Bobby {
 				for(int b=y-1;b<y+2;b++){
 					if(a>-1&&a<8&&b>-1&&b<8){
 						if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color){
-							d.add(new Point(a,b));
+							g.add(new Point(a,b));
 						}
 					}
 				}
 			}
 		}
+		d.add(g);
 		return d;
 	}
 	
@@ -204,9 +208,9 @@ public class v1Bobby {
 	}
 	
 	public void randomMove(){
-		//makes an arraylist of all the arraylists for each point
+		//makes an arraylist of all the arraylists of arraylists of moves for each piece - shit - 3d arraylist
 		//it's hierarchical - will choose from pawns first, then knights, then bishops, then rooks, then queens, then kings
-		ArrayList<ArrayList> a=new ArrayList<ArrayList>();
+		ArrayList<ArrayList<ArrayList>> a=new ArrayList<ArrayList<ArrayList>>();
 		a.add(pMoves());
 		a.add(nMoves());
 		a.add(bMoves());
@@ -216,12 +220,18 @@ public class v1Bobby {
 		
 		//picks the next type of piece
 		int i=0;
-		while(a.get(i).size()<=2)i++;
+		while(a.get(i).size()==0)i++;
 		
 		Random r=new Random();
-		Point p=new Point((Point)a.get(i).get(r.nextInt(a.get(i).size())));
+		//random piece within the type of piece - i.e. pick a random pawn 
+		int f=r.nextInt(a.get(i).size());
+		//random point that that piece can move to
+		int g=r.nextInt(a.get(i).get(f).size()-2)+2;
 		
-
+		Point start=new Point((Point)a.get(i).get(f).get(1));
+		Point p=new Point((Point)a.get(i).get(f).get(g));
+		
+		move((int)start.getX(), (int)start.getY(), (int)p.getX(), (int)p.getY());
 	}
 	
 	
@@ -230,11 +240,15 @@ public class v1Bobby {
 		Board d=new Board();
 		boolean color=true;
 		v1Bobby a=new v1Bobby(d, false);
+		a.printBoard();
+		a.randomMove();
+		a.printBoard();
 		
 		/*
 		 * 4 move checkmate with white
 		 * */
 		
+		/*
 		if(a.color==true){
 		a.move(4, 6, 4, 4);
 		a.printBoard();
@@ -245,6 +259,7 @@ public class v1Bobby {
 		a.move(5, 5, 5, 1);
 		a.printBoard();
 		}
+		*/
 				
 }
 	
