@@ -14,6 +14,12 @@ public class v1Bobby {
 		getBoard(b);
 	}
 	
+	public v1Bobby(Piece[][]b, boolean c){
+		this.color=c;
+		this.b=new Piece[8][8];
+		getBoard(b);
+	}
+	
 	public boolean getColor(){
 		return color;
 	}
@@ -27,6 +33,44 @@ public class v1Bobby {
 			for(int x=0;x<8;x++){
 				char t=b.getBoard()[x][y].toString().charAt(1);
 				boolean tt=b.getBoard()[x][y].getColor();
+				switch(t){
+				case 'P':
+					this.b[x][y]=new Pawn(tt);
+					break;
+				case 'R':
+					this.b[x][y]=new Rook(tt);
+					break;
+
+				case 'N':
+					this.b[x][y]=new Knight(tt);
+					break;
+
+				case 'B':
+					this.b[x][y]=new Bishop(tt);
+					break;
+
+				case 'K':
+					this.b[x][y]=new King(tt);
+					break;
+
+				case 'Q':
+					this.b[x][y]=new Queen(tt);
+					break;
+
+				case 'X':
+					this.b[x][y]=new Blank(true);
+					break;
+
+				}
+			}
+		}
+	}
+	
+	public void getBoard(Piece[][] u){
+		for (int y=0;y<8;y++){
+			for(int x=0;x<8;x++){
+				char t=u[x][y].toString().charAt(1);
+				boolean tt=u[x][y].getColor();
 				switch(t){
 				case 'P':
 					this.b[x][y]=new Pawn(tt);
@@ -207,48 +251,30 @@ public class v1Bobby {
 		return v;
 	}
 	
+	//makes a random move
 	public void randomMove(){
-		//makes an arraylist of all the arraylists of arraylists of moves for each piece - shit - 3d arraylist
-		//it's hierarchical - will choose from pawns first, then knights, then bishops, then rooks, then queens, then kings
-		ArrayList<ArrayList<ArrayList>> a=new ArrayList<ArrayList<ArrayList>>();
-		a.add(pMoves());
-		a.add(nMoves());
-		a.add(bMoves());
-		a.add(rMoves());
-		a.add(qMoves());
-		a.add(kMoves());
 		
-		//picks the next type of piece
-		int i=0;
-		while(a.get(i).size()==0)i++;
-		
-		Random r=new Random();
-		//random piece within the type of piece - i.e. pick a random pawn 
-		int f=r.nextInt(a.get(i).size());
-		//random point that that piece can move to
-		int g=r.nextInt(a.get(i).get(f).size()-2)+2;
-		
-		Point start=new Point((Point)a.get(i).get(f).get(1));
-		Point p=new Point((Point)a.get(i).get(f).get(g));
-		
-		move((int)start.getX(), (int)start.getY(), (int)p.getX(), (int)p.getY());
 	}
-	
 	
 	
 	public static void main(String[] args){
 		Board d=new Board();
-		boolean color=true;
-		v1Bobby a=new v1Bobby(d, false);
+		boolean color=false;
+		v1Bobby a=new v1Bobby(d, color);
+		v1Bobby b=new v1Bobby(d, !color);
 		a.printBoard();
-		a.randomMove();
-		a.printBoard();
+		b.printBoard();
+		int x=0;
+		while (x==0){
+			a.randomMove();
+			a.printBoard();
+			
+		}
+		
+		
 		
 		/*
 		 * 4 move checkmate with white
-		 * */
-		
-		/*
 		if(a.color==true){
 		a.move(4, 6, 4, 4);
 		a.printBoard();
@@ -259,8 +285,10 @@ public class v1Bobby {
 		a.move(5, 5, 5, 1);
 		a.printBoard();
 		}
-		*/
-				
+		 * */
+		
+		
+		
 }
 	
 	
