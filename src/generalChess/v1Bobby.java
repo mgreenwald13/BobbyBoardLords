@@ -183,15 +183,220 @@ public class v1Bobby {
 	//possible queen moves
 	public ArrayList<ArrayList> qMoves(){
 		ArrayList<ArrayList> d=new ArrayList<ArrayList>();
-		
+		ArrayList g=new ArrayList();
+		int x=-1;
+		int y=-1;
+		for(int j=0;j<8;j++){
+			for(int k=0;k<8;k++){
+				if (b[j][k].getColor()==color&&b[j][k].toString().charAt(1)=='Q'){
+					x=j;y=k;
+					break;
+				}
+			}
+		}
+		g.add(b[x][y]);
+		g.add(new Point(x, y));
+		if (x==-1||y==-1){
+			return null;
+		}
+		else{
+			//checks queen for diagonal down to the right. quits if adds an opposite color piece or reaches end of board  or our piece
+			int a=x;
+			if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			int b=y;
+			if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			int quit=0;
+			do{
+				a=a+1;
+				b=b+1;
+				if(a==7)quit=-999;
+				if(b==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen for diagonal down to the left. quits if adds an opposite color piece or reaches end of board  or our piece
+			a=x;
+			if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a-1;
+				b=b+1;
+				if(a==0)quit=-999;
+				if(b==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen for diagonal up to the left. quits if adds an opposite color piece or reaches end of board  or our piece
+			a=x;
+			if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a-1;
+				b=b-1;
+				if(a==0)quit=-999;
+				if(b==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen for diagonal up to the right. quits if adds an opposite color piece or reaches end of board or our piece
+			a=x;
+			if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a+1;
+				b=b-1;
+				if(a==7)quit=-999;
+				if(b==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen north. quits if adds an opposite color piece or reaches end of board or hits our piece
+			a=x;
+			b=y;
+			if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				b=b-1;
+				if(b==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen south. quits if adds an opposite color piece or reaches end of board or hits our piece
+			a=x;
+			b=y;
+			if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				b=b+1;
+				if(b==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen to the west. quits if adds an opposite color piece or reaches end of board or hits our piece
+			a=x;
+			b=y;
+			if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a+1;
+				if(a==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen to the east. quits if adds an opposite color piece or reaches end of board or hits our piece
+			a=x;
+			b=y;
+			if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a-1;
+				if(a==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			}
+		d.add(g);
 		return d;
 	}
+
 	
 	public ArrayList<ArrayList> rMoves(){
 		ArrayList<ArrayList> d=new ArrayList<ArrayList>();
+		ArrayList g=new ArrayList();
+		int x=-1;
+		int y=-1;
+		for(int j=0;j<8;j++){
+			for(int k=0;k<8;k++){
+				if (b[j][k].getColor()==color&&b[j][k].toString().charAt(1)=='Q'){
+					x=j;y=k;
+					break;
+				}
+			}
+		}
+		g.add(b[x][y]);
+		g.add(new Point(x, y));
+		if (x==-1||y==-1){
+			return null;
+		}
+		else{
+		//checks queen rook. quits if adds an opposite color piece or reaches end of board or hits our piece
+		int a=x;
+		int b=y;
+		if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+		int quit=0;
+		do{
+			b=b-1;
+			if(b==0)quit=-999;
+			if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+			if(this.b[a][b].getColor()!=color)quit=-999;
+			if(this.b[a][b].getColor()==color)quit=-999;
+		}while(quit!=-999);
 		
+		//checks rook south. quits if adds an opposite color piece or reaches end of board or hits our piece
+		a=x;
+		b=y;
+		if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+		quit=0;
+		do{
+			b=b+1;
+			if(b==7)quit=-999;
+			if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+			if(this.b[a][b].getColor()!=color)quit=-999;
+			if(this.b[a][b].getColor()==color)quit=-999;
+		}while(quit!=-999);
+		
+		//checks rook to the west. quits if adds an opposite color piece or reaches end of board or hits our piece
+		a=x;
+		b=y;
+		if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+		quit=0;
+		do{
+			a=a+1;
+			if(a==7)quit=-999;
+			if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+			if(this.b[a][b].getColor()!=color)quit=-999;
+			if(this.b[a][b].getColor()==color)quit=-999;
+		}while(quit!=-999);
+		
+		//checks rook to the east. quits if adds an opposite color piece or reaches end of board or hits our piece
+		a=x;
+		b=y;
+		if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+		quit=0;
+		do{
+			a=a-1;
+			if(a==0)quit=-999;
+			if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+			if(this.b[a][b].getColor()!=color)quit=-999;
+			if(this.b[a][b].getColor()==color)quit=-999;
+		}while(quit!=-999);
+		}
+		d.add(g);
 		return d;
 	}
+
 	
 	public ArrayList<ArrayList> nMoves(){
 		ArrayList<ArrayList>v=new ArrayList<ArrayList>();
@@ -219,10 +424,93 @@ public class v1Bobby {
 	}
 	
 	public ArrayList<ArrayList> bMoves(){
-		ArrayList<ArrayList> a=new ArrayList<ArrayList>();
-		
-		return a;
+		ArrayList<ArrayList> m=new ArrayList<ArrayList>();
+		ArrayList g=new ArrayList();
+		int x=-1;
+		int y=-1;
+		for(int j=0;j<8;j++){
+			for(int k=0;k<8;k++){
+				if (b[j][k].getColor()==color&&b[j][k].toString().charAt(1)=='Q'){
+					x=j;y=k;
+					break;
+				}
+			}
+		}
+		g.add(b[x][y]);
+		g.add(new Point(x, y));
+		if (x==-1||y==-1){
+			return null;
+		}
+		else{
+			//checks bishop for diagonal down to the right. quits if adds an opposite color piece or reaches end of board or our piece
+			int a=x;
+			if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			int b=y;
+			if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			int quit=0;
+			do{
+				a=a+1;
+				b=b+1;
+				if(a==7)quit=-999;
+				if(b==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks queen for diagonal down to the left. quits if adds an opposite color piece or reaches end of board  or our piece
+			a=x;
+			if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==7) b=b-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a-1;
+				b=b+1;
+				if(a==0)quit=-999;
+				if(b==7)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks bishop for diagonal up to the left. quits if adds an opposite color piece or reaches end of board  or our piece
+			a=x;
+			if(a==0) a=a+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a-1;
+				b=b-1;
+				if(a==0)quit=-999;
+				if(b==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			
+			//checks bishop for diagonal up to the right. quits if adds an opposite color piece or reaches end of board or our piece
+			a=x;
+			if(a==7) a=a-1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			b=y;
+			if(b==0) b=b+1; //if piece is already on edge of board, need to adjust for the do while loop to work
+			quit=0;
+			do{
+				a=a+1;
+				b=b-1;
+				if(a==7)quit=-999;
+				if(b==0)quit=-999;
+				if(this.b[a][b].toString().charAt(1)=='X'||this.b[a][b].getColor()!=color) g.add(new Point(a,b));
+				if(this.b[a][b].getColor()!=color)quit=-999;
+				if(this.b[a][b].getColor()==color)quit=-999;
+			}while(quit!=-999);
+			}
+		m.add(g);
+		return m;
 	}
+
+
 	
 	public ArrayList<ArrayList> pMoves(){
 		ArrayList<ArrayList>v=new ArrayList<ArrayList>();
@@ -240,10 +528,10 @@ public class v1Bobby {
 					}
 					
 					if(color==true){
-						if(x==6&&b[y][x-2].toString().charAt(1)=='X')d.add(new Point(y, x-2));
-						if(x-1>0&&b[y][x-1].toString().charAt(1)=='X')d.add(new Point(y, x-1));
-						if(y+1<8&&x-1>0&&(b[y+1][x-1].toString().charAt(1)!='X'&&b[y+1][x-1].getColor()!=color))d.add(new Point(y+1, x-1));
-						if(y-1<8&&x-1>0&&(b[y-1][x-1].toString().charAt(1)!='X'&&b[y-1][x-1].getColor()!=color))d.add(new Point(y-1, x-1));
+						if(y==6&&b[x][y-2].toString().charAt(1)=='X')d.add(new Point(x, y-2));
+						if(y-1>-1&&b[x][y-1].toString().charAt(1)=='X')d.add(new Point(x, y-1));
+						if(x+1<8&&y-1>-1&&(b[x+1][y-1].toString().charAt(1)!='X'&&b[x+1][y-1].getColor()!=color))d.add(new Point(x+1, y-1));
+						if(x-1>-1&&y-1>-1&&(b[x-1][y-1].toString().charAt(1)!='X'&&b[x-1][y-1].getColor()!=color))d.add(new Point(x-1, y-1));
 					}
 					v.add(d);
 			}
@@ -253,39 +541,131 @@ public class v1Bobby {
 	
 	//makes a random move
 	public void randomMove(){
-		
+		if(pMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(pMoves().size());
+			while(pMoves().get(m).size()==2){
+				m=r.nextInt(pMoves().size());
+			}
+			Point st=new Point((Point)pMoves().get(m).get(1));
+			Point fn=new Point((Point)pMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
+		else if(nMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(nMoves().size());
+			while(nMoves().get(m).size()==2){
+				m=r.nextInt(nMoves().size());
+			}
+			Point st=new Point((Point)nMoves().get(m).get(1));
+			Point fn=new Point((Point)nMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
+		else if(bMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(bMoves().size());
+			while(bMoves().get(m).size()==2){
+				m=r.nextInt(bMoves().size());
+			}
+			Point st=new Point((Point)bMoves().get(m).get(1));
+			Point fn=new Point((Point)bMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
+		else if(rMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(rMoves().size());
+			while(rMoves().get(m).size()==2){
+				m=r.nextInt(rMoves().size());
+			}
+			Point st=new Point((Point)rMoves().get(m).get(1));
+			Point fn=new Point((Point)rMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
+		else if(qMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(qMoves().size());
+			while(qMoves().get(m).size()==2){
+				m=r.nextInt(qMoves().size());
+			}
+			Point st=new Point((Point)qMoves().get(m).get(1));
+			Point fn=new Point((Point)qMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
+		else if(kMoves().size()!=0){
+			Random r=new Random();
+			int m=r.nextInt(kMoves().size());
+			while(kMoves().get(m).size()==2){
+				m=r.nextInt(kMoves().size());
+			}
+			Point st=new Point((Point)kMoves().get(m).get(1));
+			Point fn=new Point((Point)kMoves().get(m).get(2));
+			move((int)st.getX(), (int)st.getY(), (int)fn.getX(), (int)fn.getY());
+		}
 	}
 	
 	
 	public static void main(String[] args){
 		Board d=new Board();
-		boolean color=false;
+		boolean color=true;
 		v1Bobby a=new v1Bobby(d, color);
-		v1Bobby b=new v1Bobby(d, !color);
-		a.printBoard();
-		b.printBoard();
-		int x=0;
-		while (x==0){
-			a.randomMove();
-			a.printBoard();
-			
-		}
 		
-		
-		
-		/*
-		 * 4 move checkmate with white
 		if(a.color==true){
-		a.move(4, 6, 4, 4);
-		a.printBoard();
-		a.move(5, 7, 2, 4);
-		a.printBoard();
-		a.move(3, 7, 5, 5);
-		a.printBoard();
-		a.move(5, 5, 5, 1);
-		a.printBoard();
-		}
-		 * */
+			a.move(4, 6, 4, 4);
+			a.printBoard();
+			//send board, receive board
+			a.move(3, 7, 5, 5);
+			a.printBoard();
+			//send board,receive board
+			//check bishop move ok.
+			Piece[][] arr=new Piece[8][8];
+			arr=a.getPieceArray();
+			if(arr[2][4].toString().charAt(1)=='X'||arr[2][4].getColor()!=color) a.move(5, 7, 2, 4);
+			a.printBoard();
+			//send board,receive board
+			//check that queen can take pawn
+			if(arr[5][4].toString().charAt(1)=='X'
+					&&arr[5][3].toString().charAt(1)=='X'
+					&&arr[5][2].toString().charAt(1)=='X'
+					&& (arr[5][1].toString().charAt(1)=='X'
+					||arr[5][1].getColor()!=color)) a.move(5, 5, 5, 1);
+			a.printBoard();
+			//check checkmate
+			//if not checkmate
+			//for loop random move until checkmate
+			}
+			
+			
+			/*
+			 * 4 move checkmate with black
+			 * */
+			
+			
+			if(a.color==false){
+			a.move(4, 1, 4, 3);
+			a.printBoard();
+			//send board, receive board
+			a.move(3, 0, 5, 2);
+			a.printBoard();
+			//send board,receive board
+			//check bishop move ok.
+			Piece[][] arr=new Piece[8][8];
+			arr=a.getPieceArray();
+			if(arr[2][3].toString().charAt(1)=='X'||arr[2][3].getColor()!=color) a.move(5, 0, 2, 3);
+			a.printBoard();
+			//send board,receive board
+			//check that queen can take pawn
+			if(arr[5][3].toString().charAt(1)=='X'
+					&&arr[5][4].toString().charAt(1)=='X'
+					&&arr[5][5].toString().charAt(1)=='X'
+					&& (arr[5][6].toString().charAt(1)=='X'
+					||arr[5][6].getColor()!=color)) a.move(5, 2, 5, 6);
+			a.printBoard();
+			//check checkmate
+			//if not checkmate
+			//for loop random move until checkmate
+			}
+
+		
 		
 		
 		
