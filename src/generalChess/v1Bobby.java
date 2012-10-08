@@ -605,23 +605,27 @@ public class v1Bobby {
 	
 	
 	public static void main(String[] args){
+		
+		///d=gamestate
 		Board d=new Board();
 		boolean color=true;
 		v1Bobby a=new v1Bobby(d, color);
 		
+		////
+		
 		if(a.color==true){
 			a.move(4, 6, 4, 4);
 			a.printBoard();
-			//send board, receive board
+			a.getBoard(d);
 			a.move(3, 7, 5, 5);
 			a.printBoard();
-			//send board,receive board
+			a.getBoard(d);
 			//check bishop move ok.
 			Piece[][] arr=new Piece[8][8];
 			arr=a.getPieceArray();
 			if(arr[2][4].toString().charAt(1)=='X'||arr[2][4].getColor()!=color) a.move(5, 7, 2, 4);
 			a.printBoard();
-			//send board,receive board
+			a.getBoard(d);
 			//check that queen can take pawn
 			if(arr[5][4].toString().charAt(1)=='X'
 					&&arr[5][3].toString().charAt(1)=='X'
@@ -629,9 +633,11 @@ public class v1Bobby {
 					&& (arr[5][1].toString().charAt(1)=='X'
 					||arr[5][1].getColor()!=color)) a.move(5, 5, 5, 1);
 			a.printBoard();
-			//check checkmate
-			//if not checkmate
-			//for loop random move until checkmate
+			for(int i=0;i==-1;i++){
+				a.getBoard(d);
+				a.randomMove();
+				a.printBoard();
+			}
 			}
 			
 			
@@ -643,16 +649,16 @@ public class v1Bobby {
 			if(a.color==false){
 			a.move(4, 1, 4, 3);
 			a.printBoard();
-			//send board, receive board
+			a.getBoard(d);
 			a.move(3, 0, 5, 2);
 			a.printBoard();
-			//send board,receive board
+			a.getBoard(d);
 			//check bishop move ok.
 			Piece[][] arr=new Piece[8][8];
 			arr=a.getPieceArray();
 			if(arr[2][3].toString().charAt(1)=='X'||arr[2][3].getColor()!=color) a.move(5, 0, 2, 3);
 			a.printBoard();
-			//send board,receive board
+			a.getBoard(d);
 			//check that queen can take pawn
 			if(arr[5][3].toString().charAt(1)=='X'
 					&&arr[5][4].toString().charAt(1)=='X'
@@ -660,9 +666,11 @@ public class v1Bobby {
 					&& (arr[5][6].toString().charAt(1)=='X'
 					||arr[5][6].getColor()!=color)) a.move(5, 2, 5, 6);
 			a.printBoard();
-			//check checkmate
-			//if not checkmate
-			//for loop random move until checkmate
+			for(int i=0;i==-1;i++){
+				a.getBoard(d);
+				a.randomMove();
+				a.printBoard();
+			}
 			}
 
 		
