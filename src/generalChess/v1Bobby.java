@@ -5,19 +5,22 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class v1Bobby {
-	boolean color;
-	Piece[][] b;
+	public boolean color;
+	public Piece[][] b;
+	public int move;
 	
 	public v1Bobby(Board b, boolean c){
 		this.color=c;
 		this.b=new Piece[8][8];
 		getBoard(b);
+		move=0;
 	}
 	
 	public v1Bobby(Piece[][]b, boolean c){
 		this.color=c;
 		this.b=new Piece[8][8];
 		getBoard(b);
+		move=0;
 	}
 	
 	public boolean getColor(){
@@ -603,84 +606,123 @@ public class v1Bobby {
 		}
 	}
 	
-	
-	public static void main(String[] args){
-		
-		///d=gamestate
-		Board d=new Board();
-		boolean color=true;
-		v1Bobby a=new v1Bobby(d, color);
-		
-		////
-		
-		if(a.color==true){
-			a.move(4, 6, 4, 4);
-			a.printBoard();
-			a.getBoard(d);
-			a.move(3, 7, 5, 5);
-			a.printBoard();
-			a.getBoard(d);
-			//check bishop move ok.
-			Piece[][] arr=new Piece[8][8];
-			arr=a.getPieceArray();
-			if(arr[2][4].toString().charAt(1)=='X'||arr[2][4].getColor()!=color) a.move(5, 7, 2, 4);
-			a.printBoard();
-			a.getBoard(d);
-			//check that queen can take pawn
-			if(arr[5][4].toString().charAt(1)=='X'
-					&&arr[5][3].toString().charAt(1)=='X'
-					&&arr[5][2].toString().charAt(1)=='X'
-					&& (arr[5][1].toString().charAt(1)=='X'
-					||arr[5][1].getColor()!=color)) a.move(5, 5, 5, 1);
-			a.printBoard();
-			for(int i=0;i==-1;i++){
-				a.getBoard(d);
-				a.randomMove();
-				a.printBoard();
-			}
-			}
+	public Piece[][] turn(Board c){
+		getBoard(c);
+		Piece[][] arr=new Piece[8][8];
+		arr=getPieceArray();
+		move++;
+		if(color==true){
 			
+			switch (move){
+			case 1:
+				move(4, 6, 4, 4);
+				return b;
+			case 2:
+				move(3, 7, 5, 5);
+				return b;
+			case 3:
 			
-			/*
-			 * 4 move checkmate with black
-			 * */
-			
-			
-			if(a.color==false){
-			a.move(4, 1, 4, 3);
-			a.printBoard();
-			a.getBoard(d);
-			a.move(3, 0, 5, 2);
-			a.printBoard();
-			a.getBoard(d);
-			//check bishop move ok.
-			Piece[][] arr=new Piece[8][8];
-			arr=a.getPieceArray();
-			if(arr[2][3].toString().charAt(1)=='X'||arr[2][3].getColor()!=color) a.move(5, 0, 2, 3);
-			a.printBoard();
-			a.getBoard(d);
-			//check that queen can take pawn
-			if(arr[5][3].toString().charAt(1)=='X'
+				if(arr[2][4].toString().charAt(1)=='X'||arr[2][4].getColor()!=color) move(5, 7, 2, 4);
+				return b;
+			case 4:
+				if(arr[5][3].toString().charAt(1)=='X'
 					&&arr[5][4].toString().charAt(1)=='X'
 					&&arr[5][5].toString().charAt(1)=='X'
 					&& (arr[5][6].toString().charAt(1)=='X'
-					||arr[5][6].getColor()!=color)) a.move(5, 2, 5, 6);
-			a.printBoard();
-			for(int i=0;i==-1;i++){
-				a.getBoard(d);
-				a.randomMove();
-				a.printBoard();
+					||arr[5][6].getColor()!=color)) move(5, 2, 5, 6);
+				return b;
+			default:
+				randomMove();
+				return b;
+				
 			}
+		}
+		else {
+	
+			switch(move){
+			case 1:
+				move(4, 1, 4, 3);
+				return b;
+			case 2:
+				move(3, 0, 5, 2);
+				return b;
+			case 3:
+				if(arr[2][3].toString().charAt(1)=='X'||arr[2][3].getColor()!=color) move(5, 0, 2, 3);
+				return b;
+			case 4:
+				if(arr[5][3].toString().charAt(1)=='X'
+					&&arr[5][4].toString().charAt(1)=='X'
+					&&arr[5][5].toString().charAt(1)=='X'
+					&& (arr[5][6].toString().charAt(1)=='X'
+					||arr[5][6].getColor()!=color)) move(5, 2, 5, 6);
+				return b;
+			default:
+				randomMove();
+				return b;
 			}
-
 		
+			
+		}
 		
+	}
+	
+	public Piece[][] turn(Piece[][] c){
+		getBoard(c);
+		Piece[][] arr=new Piece[8][8];
+		arr=getPieceArray();
+		move++;
+		if(color==true){
+			
+			switch (move){
+			case 1:
+				move(4, 6, 4, 4);
+				return b;
+			case 2:
+				move(3, 7, 5, 5);
+				return b;
+			case 3:
+			
+				if(arr[2][4].toString().charAt(1)=='X'||arr[2][4].getColor()!=color) move(5, 7, 2, 4);
+				return b;
+			case 4:
+				if(arr[5][3].toString().charAt(1)=='X'
+					&&arr[5][4].toString().charAt(1)=='X'
+					&&arr[5][5].toString().charAt(1)=='X'
+					&& (arr[5][6].toString().charAt(1)=='X'
+					||arr[5][6].getColor()!=color)) move(5, 2, 5, 6);
+				return b;
+			default:
+				randomMove();
+				return b;
+				
+			}
+		}
+		else {
+	
+			switch(move){
+			case 1:
+				move(4, 1, 4, 3);
+				return b;
+			case 2:
+				move(3, 0, 5, 2);
+				return b;
+			case 3:
+				if(arr[2][3].toString().charAt(1)=='X'||arr[2][3].getColor()!=color) move(5, 0, 2, 3);
+				return b;
+			case 4:
+				if(arr[5][3].toString().charAt(1)=='X'
+					&&arr[5][4].toString().charAt(1)=='X'
+					&&arr[5][5].toString().charAt(1)=='X'
+					&& (arr[5][6].toString().charAt(1)=='X'
+					||arr[5][6].getColor()!=color)) move(5, 2, 5, 6);
+				return b;
+			default:
+				randomMove();
+				return b;
+			}
 		
+			
+		}
 		
-}
-	
-	
-	
-	
-
+	}
 }
